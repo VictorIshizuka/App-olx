@@ -1,6 +1,7 @@
 
 ## criando um ecommerce para estudo 
--- react-router-dom;
+-- react-router-dom;/
+-- styled-components;
 
 
 # React + Vite
