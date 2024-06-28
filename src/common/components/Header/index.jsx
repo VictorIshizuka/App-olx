@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { isLogged } from "../../helpers/AuthHandler";
+import { doLogout, isLogged } from "../../helpers/AuthHandler";
 
 const HeaderArea = styled.header`
   height: 60px;
@@ -98,7 +98,14 @@ export const Header = () => {
                   <Link to={"/my-account"}>Minha conta</Link>
                 </li>
                 <li>
-                  <Link to={"/logout"}>Sair</Link>
+                  <Link
+                    onClick={() => {
+                      doLogout();
+                      window.location.href = "/";
+                    }}
+                  >
+                    Sair
+                  </Link>
                 </li>
                 <li>
                   <Link to={"register"} className="button-anuncio">
@@ -110,13 +117,13 @@ export const Header = () => {
             {!logged && (
               <>
                 <li>
-                  <Link to={"/sigin"}>Login</Link>
+                  <Link to={"/signin"}>Login</Link>
                 </li>
                 <li>
                   <Link to={"/signup"}>Cadastrar</Link>
                 </li>
                 <li>
-                  <Link to={"sigin"} className="button-anuncio">
+                  <Link to={"/signin"} className="button-anuncio">
                     Postar anúncio
                   </Link>
                 </li>
