@@ -88,8 +88,6 @@ export const Signup = () => {
     const json = await api.signup(name, email, state, password);
 
     if (json.error) {
-      console.log(json.error);
-
       setIsError(json.error);
     } else {
       window.location.href = "/signin";

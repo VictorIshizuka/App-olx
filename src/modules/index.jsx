@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useApi from "../common/helpers/OLX_api";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import AdItem from "../common/components/AdItem";
 
 const SearchAreaStyled = styled.div`
   background-color: #ddd;
@@ -72,12 +73,31 @@ const SearchAreaStyled = styled.div`
   }
 `;
 
-const PageArea = styled.div``;
+const PageArea = styled.div`
+  h2 {
+    font-size: 20px;
+  }
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    .aditem {
+      width: 25%;
+    }
+  }
+  .seeAllLink {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+  }
+`;
 
 export const Home = () => {
   const api = useApi();
   const [stateList, setStateList] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [adsList, setAdList] = useState([]);
 
   useEffect(() => {
     const getStates = async () => {
@@ -92,6 +112,13 @@ export const Home = () => {
       setCategories(isCategoriesList);
     };
     getCategories();
+  }, []);
+  useEffect(() => {
+    const getAds = async () => {
+      const isAdsList = await api.getAds({ sort: "desc", limit: 8 });
+      setAdList(isAdsList);
+    };
+    getAds();
   }, []);
 
   return (
@@ -133,7 +160,19 @@ export const Home = () => {
         </PageContainer>
       </SearchAreaStyled>
       <PageContainer>
-        <PageArea>...</PageArea>
+        <PageArea>
+          <h2>Anúncios Recentes</h2>
+          <div className="list">
+            {adsList.map(item => (
+              <AdItem key={item.id} data={item} />
+            ))}
+          </div>
+          <Link to="/ads" className="seeAllLink">
+            Ver todos
+          </Link>
+          <hr />
+          texto qualquer basicao
+        </PageArea>
       </PageContainer>
     </>
   );

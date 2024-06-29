@@ -74,8 +74,13 @@ const OlxApi = {
   },
   getCategories: async () => {
     const json = await apiGet("categories");
-    console.log(json.categories);
+
     return json.categories;
+  },
+  getAds: async options => {
+    const json = await apiGet("ad/list", options);
+
+    return json.ads;
   },
 };
 
