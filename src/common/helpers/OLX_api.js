@@ -27,6 +27,26 @@ const apiPost = async (endpoint, body) => {
   }
   return json;
 };
+const apiPostFile = async (endpoint, body) => {
+  if (!body.token) {
+    let token = Cookies.get("token");
+    if (token) {
+      body.append("token", token);
+    }
+  }
+
+  const res = await fetch(BASEAPI + endpoint, {
+    method: "POST",
+    body,
+  });
+
+  const json = await res.json();
+  if (json.notallowed) {
+    window.location.href = "/signin";
+    return;
+  }
+  return json;
+};
 
 export const apiGet = async (endpoint, body = []) => {
   if (!body.token) {
@@ -85,6 +105,10 @@ const OlxApi = {
   getAd: async (id, other = false) => {
     const json = await apiGet("ad/item", { id, other });
 
+    return json;
+  },
+  addAd: async fData => {
+    const json = await apiPostFile("ad/add", fData);
     return json;
   },
 };

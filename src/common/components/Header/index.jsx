@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { doLogout, isLogged } from "../../helpers/AuthHandler";
 
@@ -78,6 +78,7 @@ const HeaderArea = styled.header`
 `;
 
 export const Header = () => {
+  const { pathname } = useLocation();
   let logged = isLogged();
 
   return (
@@ -107,11 +108,13 @@ export const Header = () => {
                     Sair
                   </Link>
                 </li>
-                <li>
-                  <Link to={"/post-an-ad"} className="button-anuncio">
-                    Postar anúncio
-                  </Link>
-                </li>
+                {pathname !== "/post-an-ad" && (
+                  <li>
+                    <Link to={"/post-an-ad"} className="button-anuncio">
+                      Postar anúncio
+                    </Link>
+                  </li>
+                )}
               </>
             )}
             {!logged && (

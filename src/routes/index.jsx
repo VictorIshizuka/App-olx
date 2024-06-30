@@ -4,8 +4,8 @@ import { NotFound } from "../common/pages/NotFound";
 import { Signin } from "../modules/auth/pages/Signin";
 import { Signup } from "../modules/auth/pages/Signup";
 import { Ad } from "../modules/ad/pages/Ad";
+import { AddAd } from "../modules/ad/pages/AddAd";
 import RouteHandler from "../common/components/RouteHandler";
-import AddAd from "../modules/ad/pages/AddAd";
 
 export const IsRoutes = () => {
   return (

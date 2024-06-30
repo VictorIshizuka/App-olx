@@ -111,7 +111,7 @@ export const Signin = () => {
           </label>
           <label className="area" htmlFor="">
             <div className="area--title">Lembrar senha</div>
-            <div className="area--input">
+            <div className="area--input" style={{ paddingRight: "260px" }}>
               <input
                 type="checkbox"
                 checked={rememberPassword}

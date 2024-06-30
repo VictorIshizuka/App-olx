@@ -130,7 +130,7 @@ export const Ad = () => {
       setLoading(false);
     };
     getAdInfo(id);
-  }, []);
+  }, [id]);
 
   return (
     <PageContainer>
