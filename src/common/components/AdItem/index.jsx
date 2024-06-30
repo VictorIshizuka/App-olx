@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { maskCurrency } from "../../helpers/number";
 
 const ItemStyled = styled.div`
   a {
@@ -31,15 +32,14 @@ export default function AdItem(data) {
   if (data.data.priceNEgotiable) {
     price = "Preço negociável";
   } else {
-    const priceBR = data.data.price.toString();
-    price = `R$ ${priceBR.replace(".", ",")}`;
+    price = maskCurrency(data.data.price);
   }
-  console.log(data.data.image);
+
   return (
     <ItemStyled className="aditem">
       <Link to={`/ad/${data.data.id}`}>
         <div className="itemImage">
-          <img src="/src/common/image/historia-da-fotografia-og.png" alt="" />
+          <img src={data.data.image} alt="" />
         </div>
         <div className="itemName">{data.data.title}</div>
         <div className="itemPrice">{price}</div>

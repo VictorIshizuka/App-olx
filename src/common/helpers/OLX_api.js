@@ -82,6 +82,11 @@ const OlxApi = {
 
     return json.ads;
   },
+  getAd: async (id, other = false) => {
+    const json = await apiGet("ad/item", { id, other });
+
+    return json;
+  },
 };
 
 export default () => OlxApi;

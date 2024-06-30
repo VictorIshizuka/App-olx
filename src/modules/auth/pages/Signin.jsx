@@ -68,6 +68,7 @@ export const Signin = () => {
     setDisabled(true);
     setIsError("");
     const json = await api.login(email, password);
+    setDisabled(false);
 
     if (json.error) {
       setIsError(json.error);
