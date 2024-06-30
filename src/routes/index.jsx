@@ -4,6 +4,8 @@ import { NotFound } from "../common/pages/NotFound";
 import { Signin } from "../modules/auth/pages/Signin";
 import { Signup } from "../modules/auth/pages/Signup";
 import { Ad } from "../modules/ad/pages/Ad";
+import RouteHandler from "../common/components/RouteHandler";
+import AddAd from "../modules/ad/pages/AddAd";
 
 export const IsRoutes = () => {
   return (
@@ -13,6 +15,14 @@ export const IsRoutes = () => {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/ad/:id" element={<Ad />} />
+        <Route
+          path="/post-an-ad"
+          element={
+            <RouteHandler private>
+              <AddAd />
+            </RouteHandler>
+          }
+        />
 
         <Route path="/*" element={<NotFound />} />
       </Routes>

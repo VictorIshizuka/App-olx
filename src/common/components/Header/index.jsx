@@ -108,7 +108,7 @@ export const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to={"register"} className="button-anuncio">
+                  <Link to={"/post-an-ad"} className="button-anuncio">
                     Postar anúncio
                   </Link>
                 </li>
