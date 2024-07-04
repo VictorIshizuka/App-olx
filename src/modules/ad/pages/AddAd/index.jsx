@@ -104,7 +104,6 @@ export const AddAd = () => {
       fData.append("priceneg", priceNegotiable);
       fData.append("cat", category);
       if (fileField.current.files.length > 0) {
-        console.log("cauii");
         for (let i = 0; i < fileField.current.files.length; i++) {
           fData.append("img", fileField.current.files[i]);
         }

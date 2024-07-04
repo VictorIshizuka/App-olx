@@ -6,6 +6,7 @@ import { Signup } from "../modules/auth/pages/Signup";
 import { Ad } from "../modules/ad/pages/Ad";
 import { AddAd } from "../modules/ad/pages/AddAd";
 import RouteHandler from "../common/components/RouteHandler";
+import { Ads } from "../modules/ad/pages/Ads";
 
 export const IsRoutes = () => {
   return (
@@ -15,6 +16,7 @@ export const IsRoutes = () => {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/ad/:id" element={<Ad />} />
+        <Route path="/ads" element={<Ads />} />
         <Route
           path="/post-an-ad"
           element={

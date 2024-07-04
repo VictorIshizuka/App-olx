@@ -155,7 +155,6 @@ export const Ad = () => {
               {adInfo.images && (
                 <Slide>
                   {adInfo.images.map((image, index) => {
-                    console.log(image);
                     return (
                       <div key={index} className="each-slide">
                         <img src={image} alt="" />
@@ -177,13 +176,16 @@ export const Ad = () => {
               <div className="adDescription">
                 {loading && <Fake height={100} />}
                 {adInfo && (
-                  <p>
-                    {adInfo.description}
+                  <>
+                    <p>{adInfo.description}</p>
+
                     <hr />
-                    {adInfo.views && (
-                      <small>{`Vizualizações: ${adInfo.views} views`}</small>
-                    )}
-                  </p>
+                    <p>
+                      {adInfo.views && (
+                        <small>{`Vizualizações: ${adInfo.views} views`}</small>
+                      )}
+                    </p>
+                  </>
                 )}
               </div>
             </div>
@@ -211,7 +213,6 @@ export const Ad = () => {
                 Fale com o vendedor
               </a>
               <div className="createdBy box box--padding">
-                {console.log(adInfo)}
                 <strong>{adInfo.userInfo.name}</strong>
                 <small>E-mail:{adInfo.userInfo.email}</small>
                 <small>Estado:{adInfo.stateName}</small>

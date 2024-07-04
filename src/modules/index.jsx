@@ -106,6 +106,7 @@ export const Home = () => {
     };
     getStates();
   }, []);
+
   useEffect(() => {
     const getCategories = async () => {
       const isCategoriesList = await api.getCategories();
@@ -113,10 +114,11 @@ export const Home = () => {
     };
     getCategories();
   }, []);
+
   useEffect(() => {
     const getAds = async () => {
       const isAdsList = await api.getAds({ sort: "desc", limit: 8 });
-      setAdList(isAdsList);
+      setAdList(isAdsList.ads);
     };
     getAds();
   }, []);
