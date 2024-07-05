@@ -202,7 +202,7 @@ export const Ads = () => {
       setPageCount(0);
     }
   }, [adList.length, adTotal, pageCount]);
-
+  console.log(pageCount);
   for (let count = 1; count <= pageCount; count++) {
     arrayPagination.push(count);
   }
@@ -256,13 +256,13 @@ export const Ads = () => {
           </div>
           <div className="rightSide">
             <h2>Resultados para {`"${cat} ${q}${state}"`}</h2>
-            <div className="pagenation"> Paginas: {pageCount}</div>
+            {/* <div className="pagenation"> Paginas: {pageCount}</div> */}
             {loading && adList.length === 0 && (
               <div className="listWarning">carregando...</div>
             )}
             {!loading && adList.length === 0 && (
               <div className="listWarning">
-                Nenhum reusltado encontrado para {`"${cat}${q}${state}"`}
+                Nenhum reusltado encontrado para {`"${(cat, q, state)}"`}
               </div>
             )}
 

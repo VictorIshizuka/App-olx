@@ -29,13 +29,13 @@ const HeaderArea = styled.header`
     }
 
     .logo-1 {
-      color: #ff0000;
+      color: #ff8800;
     }
     .logo-2 {
-      color: #00ff00;
+      color: #70c30b;
     }
     .logo-3 {
-      color: #0000ff;
+      color: #10b1d5;
     }
   }
   nav {
@@ -86,9 +86,9 @@ export const Header = () => {
       <div className="container">
         <div className="logo">
           <Link to="/">
-            {/* <span className="logo-1">O</span>
-            <span className="logo-2">L</span>
-            <span className="logo-3">X</span> */}
+            <span className="logo-1">E</span>
+            <span className="logo-2">C</span>
+            <span className="logo-3">O</span>
           </Link>
         </div>
         <nav>
@@ -96,7 +96,7 @@ export const Header = () => {
             {logged && (
               <>
                 <li>
-                  <Link to={"/my-account"}>Minha conta</Link>
+                  <Link to={"/perfil"}>Minha conta</Link>
                 </li>
                 <li>
                   <Link

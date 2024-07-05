@@ -7,6 +7,7 @@ import { Ad } from "../modules/ad/pages/Ad";
 import { AddAd } from "../modules/ad/pages/AddAd";
 import RouteHandler from "../common/components/RouteHandler";
 import { Ads } from "../modules/ad/pages/Ads";
+import { Profile } from "../modules/users/pages/profile";
 
 export const IsRoutes = () => {
   return (
@@ -22,6 +23,14 @@ export const IsRoutes = () => {
           element={
             <RouteHandler private>
               <AddAd />
+            </RouteHandler>
+          }
+        />
+        <Route
+          path="/perfil"
+          element={
+            <RouteHandler private>
+              <Profile />
             </RouteHandler>
           }
         />

@@ -51,10 +51,11 @@ const SearchAreaStyled = styled.div`
 
   .categoryList {
     display: flex;
+    margin-left: 60px;
     flex-wrap: wrap;
     margin-top: 20px;
     .categoryItem {
-      width: 25%;
+      width: 20%;
       display: flex;
       align-items: center;
       color: #000;
@@ -146,16 +147,14 @@ export const Home = () => {
           <div className="categoryList">
             {categories.map((item, index) => {
               return (
-                <>
-                  <Link
-                    key={index}
-                    to={`/ads?cat=${item.slug}`}
-                    className="categoryItem"
-                  >
-                    <img src={item.img} alt="" />
-                    <span>{item.name}</span>
-                  </Link>
-                </>
+                <Link
+                  key={index}
+                  to={`/ads?cat=${item.slug}`}
+                  className="categoryItem"
+                >
+                  <img src={item.img} alt="" />
+                  <span>{item.name}</span>
+                </Link>
               );
             })}
           </div>

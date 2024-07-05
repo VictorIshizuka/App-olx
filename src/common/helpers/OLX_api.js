@@ -3,6 +3,30 @@ import QueryString from "qs";
 
 const BASEAPI = "http://localhost:5000/";
 
+const apiPut = async (endpoint, body) => {
+  if (!body.token) {
+    let token = Cookies.get("token");
+    if (token) {
+      body.token = token;
+    }
+  }
+
+  const res = await fetch(BASEAPI + endpoint, {
+    method: "PUT",
+    headers: {
+      Accept: "Application/json",
+      "Content-Type": "Application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
+  const json = await res.json();
+  if (json.notallowed) {
+    window.location.href = "/signin";
+    return;
+  }
+  return json;
+};
 const apiPost = async (endpoint, body) => {
   if (!body.token) {
     let token = Cookies.get("token");
@@ -109,6 +133,14 @@ const OlxApi = {
   },
   addAd: async fData => {
     const json = await apiPostFile("ad/add", fData);
+    return json;
+  },
+  getUser: async () => {
+    const json = await apiGet("user/me");
+    return json;
+  },
+  updateUser: async fData => {
+    const json = await apiPut("user/me", fData);
     return json;
   },
 };

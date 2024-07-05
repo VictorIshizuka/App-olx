@@ -1,8 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { maskCurrency } from "../../helpers/number";
 
 const ItemStyled = styled.div`
+  background-color: #f8f5f5;
+  padding: 5px;
+  .edit {
+    background-color: #ffb700;
+  }
+  .delete {
+    background-color: red;
+  }
   a {
     display: block;
     border: 1px solid #fff;
@@ -23,11 +31,17 @@ const ItemStyled = styled.div`
     }
     .itemName {
       font-weight: bold;
+      font-size: 20px;
+    }
+    .itemPrice {
+      font-weight: bold;
+      font-size: 15px;
     }
   }
 `;
 
 export default function AdItem(data) {
+  const location = useLocation();
   let price = "";
   if (data.data.priceNEgotiable) {
     price = "Preço negociável";
@@ -37,9 +51,19 @@ export default function AdItem(data) {
 
   return (
     <ItemStyled className="aditem">
+      {location.pathname === "/perfil" && (
+        <div style={{ display: "flex", justifyContent: "end" }}>
+          <button className="edit" onClick={() => {}}>
+            editar
+          </button>
+          <button className="delete" onClick={() => {}}>
+            deletar
+          </button>
+        </div>
+      )}
       <Link to={`/ad/${data.data.id}`}>
         <div className="itemImage">
-          <img src={data.data.image} alt="" />
+          <img src={"/src/common/image/download (1).jpg"} alt="" />
         </div>
         <div className="itemName">{data.data.title}</div>
         <div className="itemPrice">{price}</div>
